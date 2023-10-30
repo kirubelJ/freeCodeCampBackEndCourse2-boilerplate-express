@@ -59,7 +59,21 @@ app.get("/json", function(req, res) {
     res.json({ "message": "Hello json" });
   }
 })
-//
+//end 6
+
+/** 7) Root-level Middleware - A logger */
+//  place it before all the routes !
+
+//Challenge 8 Chaining middleware. A Time server
+app.get("/now", function(req, res, next) {
+  req.time = new Date().toString();
+  next();
+
+}, function(req, res) {
+  res.json({ "time": req.time })
+})
+
+//end 8
 
 
 
